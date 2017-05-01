@@ -1,0 +1,80 @@
+exports[`Component: Home alter state by triggering click callback 1`] = `
+<div
+  className="container">
+  <div
+    className="starter-template">
+    <h1>
+      Lets Learn React
+    </h1>
+    <button
+      className="btn btn-default"
+      onClick={[Function]}>
+      Toggle Alert Type
+    </button>
+    <hr />
+    <div
+      className="alert alert-info"
+      role="alert">
+      <strong>
+        Step 2
+         - 
+      </strong>
+      Presentational Component
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Component: Home alter state by triggering click callback 2`] = `
+<div
+  className="container">
+  <div
+    className="starter-template">
+    <h1>
+      Lets Learn React
+    </h1>
+    <button
+      className="btn btn-default"
+      onClick={[Function]}>
+      Toggle Alert Type
+    </button>
+    <hr />
+    <div
+      className="alert alert-danger"
+      role="alert">
+      <strong>
+        Step 2
+         - 
+      </strong>
+      Presentational Component
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Component: Home basic render 1`] = `
+<div
+  className="container">
+  <div
+    className="starter-template">
+    <h1>
+      Lets Learn React
+    </h1>
+    <button
+      className="btn btn-default"
+      onClick={[Function]}>
+      Toggle Alert Type
+    </button>
+    <hr />
+    <div
+      className="alert alert-info"
+      role="alert">
+      <strong>
+        Step 2
+         - 
+      </strong>
+      Presentational Component
+    </div>
+  </div>
+</div>
+`;
