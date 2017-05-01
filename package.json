@@ -14,5 +14,22 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "globals": {
+      "jasmine": true
+    },
+    "rules": {
+      "semi": [
+        "warn",
+        "always"
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "no-use-before-define": 0
+    }
   }
 }
