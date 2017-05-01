@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './Home';
+import LoginPage from './Login';
 
-ReactDOM.render(<Home />, document.getElementById('root'));
+ReactDOM.render(<LoginPage />, document.getElementById('root'));
