@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Alert from './Alert';
 
 class Home extends React.Component {
   state = {
@@ -33,12 +34,5 @@ class Home extends React.Component {
     );
   }
 }
-
-const Alert = props => (
-  <div className={`alert alert-${props.type}`} role="alert">
-    {props.title && <strong>{props.title} - </strong>}
-    {props.children}
-  </div>
-);
 
 ReactDOM.render(<Home />, document.getElementById('root'));
