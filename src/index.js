@@ -1,16 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Alert extends React.Component {
-  render() {
-    return (
-      <div className={`alert alert-${this.props.type}`} role="alert">
-        {this.props.title && <strong>{this.props.title} - </strong>}
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const Alert = props => (
+  <div className={`alert alert-${props.type}`} role="alert">
+    {props.title && <strong>{props.title} - </strong>}
+    {props.children}
+  </div>
+);
 
 ReactDOM.render(
   <div className="container">
