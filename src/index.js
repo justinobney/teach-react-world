@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginPage from './Login';
+import ApiExample from './ApiExample';
 
-ReactDOM.render(<LoginPage />, document.getElementById('root'));
+ReactDOM.render(<ApiExample />, document.getElementById('root'));
