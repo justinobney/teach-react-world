@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ApiExample from './ApiExample';
 
-ReactDOM.render(<ApiExample />, document.getElementById('root'));
+const App = () => <div>App go here</div>;
+
+ReactDOM.render(<App />, document.getElementById('root'));
