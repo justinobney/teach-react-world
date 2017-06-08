@@ -7,29 +7,81 @@ import {
   Link,
   Redirect,
   Switch,
+  withRouter,
 } from 'react-router-dom';
 
-const App = () => (
-  <Router>
-    <div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/topics">Topics</Link></li>
-      </ul>
+// function to fake API call with some latency
+function fakeSessionApiCall() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        permissions: ['home', 'topics'],
+        defaultPage: '/about',
+      });
+    }, 1000);
+  });
+}
 
-      <hr />
+// main focus of this example
+class App extends React.Component {
+  state = {
+    loading: true,
+    session: {},
+  };
 
+  async componentWillMount() {
+    const { history } = this.props; // comes from 'withRouter' HOC
+    const session = await fakeSessionApiCall();
+    history.push(session.defaultPage);
+    this.setState({
+      loading: false,
+      session: session,
+    });
+  }
+
+  _canRouteTo(route) {
+    const { session } = this.state;
+    if (!session.permissions) {
+      return false;
+    }
+    return session.permissions.indexOf(route) > -1;
+  }
+
+  _renderRoutes = () => {
+    return (
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/topics" component={Topics} />
+        {this._canRouteTo('home') && <Route exact path="/" component={Home} />}
+        {this._canRouteTo('about') && <Route path="/about" component={About} />}
+        {this._canRouteTo('topics') &&
+          <Route path="/topics" component={Topics} />}
         <Redirect to="/" />
       </Switch>
-    </div>
-  </Router>
-);
+    );
+  };
 
+  render() {
+    const { loading } = this.state;
+    return (
+      <div>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/topics">Topics</Link></li>
+        </ul>
+
+        <hr />
+
+        {!loading && this._renderRoutes()}
+        {loading && 'Loading...'}
+      </div>
+    );
+  }
+}
+
+// decorate App component to have access to router properties/methods
+const AppWithRouter = withRouter(App);
+
+// supplimental pages for example
 const Home = () => (
   <div>
     <h2>Home</h2>
@@ -78,4 +130,10 @@ const Topic = ({ match }) => (
   </div>
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// initialize application
+ReactDOM.render(
+  <Router>
+    <AppWithRouter />
+  </Router>,
+  document.getElementById('root')
+);
